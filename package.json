@@ -19,7 +19,9 @@
   "homepage": "https://github.com/RaneWallin/full-stack-portfolio#readme",
   "dependencies": {
     "express": "^4.17.0",
+    "helmet": "^3.18.0",
     "mongoose": "^5.5.9",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.0"
   }
 }

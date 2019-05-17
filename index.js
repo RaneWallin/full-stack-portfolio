@@ -1,9 +1,4 @@
-const express = require("express");
-const mongoose = require("mongoose");
-
-mongoose.connect();
-
-const server = express();
+const server = require("./server");
 
 const PORT = process.env.PORT || 8080;
 
