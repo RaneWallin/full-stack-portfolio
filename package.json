@@ -1,0 +1,25 @@
+{
+  "name": "full-stack-portfolio",
+  "version": "1.0.0",
+  "description": "Rane Wallin's portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaneWallin/full-stack-portfolio.git"
+  },
+  "author": "Rane Wallin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaneWallin/full-stack-portfolio/issues"
+  },
+  "homepage": "https://github.com/RaneWallin/full-stack-portfolio#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "mongoose": "^5.5.9",
+    "nodemon": "^1.19.0"
+  }
+}
