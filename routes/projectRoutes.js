@@ -14,6 +14,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const project = await projectDB.getProject(req.params.id);
+
+    if (project && Object.keys(project).length > 0) return res.json(project);
+
+    res.status(400).json({ message: "Unable to retrieve project" });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 router.post("/", requireLogin, async (req, res) => {
   if (!req.body) return res.status(400).json({ message: "No data received." });
 

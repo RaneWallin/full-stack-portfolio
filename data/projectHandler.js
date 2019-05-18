@@ -12,6 +12,9 @@ const getProjects = async () => {
 
 const getProject = id => {
   // stuff
+  const project = Project.findOne({ id });
+
+  return project;
 };
 
 const addProject = async data => {
