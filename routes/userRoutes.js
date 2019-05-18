@@ -1,6 +1,8 @@
 const express = require("express");
 const userDb = require("../data/userData");
 
+const requireLogin = require("../middleware/requireLogin");
+
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -8,7 +10,7 @@ router.post("/", async (req, res) => {
   res.json(user);
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", requireLogin, async (req, res) => {
   const id = req.params.id;
 
   try {

@@ -19,5 +19,9 @@ router.get(
     res.json({ message: "Authentication succeeded" });
   }
 );
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

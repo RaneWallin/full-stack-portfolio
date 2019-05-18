@@ -35,7 +35,6 @@ server.use("/users", userRouter);
 server.use("/auth", authRouter);
 
 server.get("/api/current_user", (req, res) => {
-  console.log(req.user);
   res.send(req.user);
 });
 
