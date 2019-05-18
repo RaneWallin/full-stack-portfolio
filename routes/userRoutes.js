@@ -22,4 +22,17 @@ router.get("/:id", requireLogin, async (req, res) => {
   }
 });
 
+router.put("/", requireLogin, async (req, res) => {
+  try {
+    const result = await userDb.updateUser(req.body);
+
+    if (!result)
+      return res.status(400).json({ message: "User was not updated." });
+
+    res.status(200).json({ message: "User updated." });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;

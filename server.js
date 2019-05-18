@@ -31,7 +31,7 @@ server.use(
 server.use(passport.initialize());
 server.use(passport.session());
 
-server.use("/users", userRouter);
+server.use("/user", userRouter);
 server.use("/auth", authRouter);
 
 server.get("/api/current_user", (req, res) => {
