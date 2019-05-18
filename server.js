@@ -3,10 +3,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-// Authentication
-const passport = require("passport");
-const GithubStrategy = require("passport-github2").Strategy;
-
 const keys = require("./config/keys");
 
 require("./models/User");
@@ -14,6 +10,7 @@ require("./models/User");
 mongoose.connect(keys.mongoURI);
 
 const userRouter = require("./routes/userRoutes");
+const authRouter = require("./routes/authRoutes");
 
 const server = express();
 
