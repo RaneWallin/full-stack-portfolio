@@ -8,7 +8,12 @@ const { Schema } = mongoose;
 const userSchema = new Schema(
   {
     _id: Number,
-    name: String
+    name: String,
+    subHeading: String,
+    email: String,
+    phone: String,
+    bio: String,
+    githubID: String
   },
   { _id: false }
 );

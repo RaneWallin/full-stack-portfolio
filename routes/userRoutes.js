@@ -1,15 +1,10 @@
 const express = require("express");
-const mongoose = require("mongoose");
-
-//const user = require("../models/User");
-
-const User = mongoose.model("users");
+const userDb = require("../data/userData");
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
-  const user = new User(req.body);
-  user.save();
+router.post("/", async (req, res) => {
+  const user = await userDb.addUser(req.body);
   res.json(user);
 });
 
@@ -17,9 +12,9 @@ router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    const user = await User.findById(id);
+    const user = await userDb.getUser(id);
 
-    if (user) return res.json(user);
+    res.json(user);
   } catch (err) {
     console.log(err);
   }
