@@ -3,6 +3,10 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
+// Authentication
+const passport = require("passport");
+const GithubStrategy = require("passport-github2").Strategy;
+
 const keys = require("./config/keys");
 
 require("./models/User");
