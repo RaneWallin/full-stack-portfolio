@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 const Project = mongoose.model("projects");
 
-const getProjects = () => {
+const getProjects = async () => {
   // stuff
+  const projects = await Project.find({});
+
+  if (projects && Object.keys(projects).length > 0) return projects;
+
+  return null;
 };
 
 const getProject = id => {
@@ -21,4 +26,10 @@ const deleteProject = id => {
   // stuff
 };
 
-module.exports = {};
+module.exports = {
+  getProject,
+  getProjects,
+  addProject,
+  updateProject,
+  deleteProject
+};

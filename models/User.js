@@ -18,7 +18,7 @@ const userSchema = new Schema(
   { _id: false }
 );
 
-userSchema.plugin(AutoIncrement);
+userSchema.plugin(AutoIncrement, { collection_name: "userCounter" });
 
 // Tell mongodb to create a model named users
 mongoose.model("users", userSchema);

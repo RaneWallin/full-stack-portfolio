@@ -8,12 +8,14 @@ const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 
 require("./models/User");
+require("./models/Project");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
 
 const userRouter = require("./routes/userRoutes");
 const authRouter = require("./routes/authRoutes");
+const projectRouter = require("./routes/projectRoutes");
 
 const server = express();
 
@@ -33,6 +35,7 @@ server.use(passport.session());
 
 server.use("/user", userRouter);
 server.use("/auth", authRouter);
+server.use("/project", projectRouter);
 
 server.get("/api/current_user", (req, res) => {
   res.send(req.user);
