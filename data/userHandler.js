@@ -29,8 +29,6 @@ const updateUser = async data => {
     data
   );
 
-  console.log(result);
-
   return result.nModified;
 };
 

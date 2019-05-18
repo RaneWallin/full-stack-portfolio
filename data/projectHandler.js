@@ -14,8 +14,11 @@ const getProject = id => {
   // stuff
 };
 
-const addProject = project => {
+const addProject = async data => {
   // stuff
+  const project = await new Project(data).save();
+
+  return project;
 };
 
 const updateProject = project => {
