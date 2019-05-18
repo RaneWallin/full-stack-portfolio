@@ -24,12 +24,18 @@ const addProject = async data => {
   return project;
 };
 
-const updateProject = project => {
+const updateProject = async (id, data) => {
   // stuff
+  const result = await Project.updateOne({ id }, data);
+
+  return result.nModified;
 };
 
-const deleteProject = id => {
+const deleteProject = async id => {
   // stuff
+  const result = await Project.deleteOne({ id });
+
+  return result.nModified;
 };
 
 module.exports = {

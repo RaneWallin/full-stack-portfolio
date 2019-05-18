@@ -42,4 +42,17 @@ router.post("/", requireLogin, async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const result = await projectDB.updateProject(req.params.id, req.body);
+
+    if (result) return res.json({ message: "Project updated" });
+
+    res.status(400).json({ message: "Unable to update project." });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 module.exports = router;
