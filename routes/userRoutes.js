@@ -10,11 +10,11 @@ router.post("/", async (req, res) => {
   res.json(user);
 });
 
-router.get("/:id", requireLogin, async (req, res) => {
+router.get("/", requireLogin, async (req, res) => {
   const id = req.params.id;
 
   try {
-    const user = await userDb.getUser(id);
+    const user = await userDb.getUserByGithubId();
 
     res.json(user);
   } catch (err) {
