@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("passport");
-const userDB = require("../data/userData");
+const userDB = require("../data/userHandler");
 const keys = require("../config/keys");
 
 const router = express.Router();

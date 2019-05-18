@@ -11,8 +11,6 @@ const addUser = async data => {
 const getUser = async id => {
   const user = await User.findById(id);
 
-  console.log(user);
-
   return user;
 };
 
@@ -24,5 +22,6 @@ const getUserByGithubId = async id => {
 
 module.exports = {
   addUser,
-  getUser
+  getUser,
+  getUserByGithubId
 };

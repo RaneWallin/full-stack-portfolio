@@ -1,5 +1,5 @@
 const express = require("express");
-const userDb = require("../data/userData");
+const userDb = require("../data/userHandler");
 
 const requireLogin = require("../middleware/requireLogin");
 
