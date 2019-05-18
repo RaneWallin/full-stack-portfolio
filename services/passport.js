@@ -7,8 +7,7 @@ const keys = require("../config/keys");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
-  console.log(user);
-  done(null, user.profile.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -24,11 +23,24 @@ passport.use(
       clientSecret: keys.githubCientSecret,
       callbackURL: "http://localhost:8080/auth/github/callback"
     },
-    function(accessToken, refreshToken, profile, done) {
-      done(null, {
-        accessToken,
-        profile
-      });
+    async function(accessToken, refreshToken, profile, done) {
+      try {
+        const existingUser = await User.findOne({ githubID: profile.id });
+
+        if (existingUser) return done(null, existingUser);
+
+        const newUser = await new User({
+          name: profile.displayName,
+          githubID: profile.id
+        }).save();
+
+        done(null, {
+          accessToken,
+          newUser
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   )
 );

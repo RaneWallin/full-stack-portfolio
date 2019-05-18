@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const userDB = require("../data/userData");
+const keys = require("../config/keys");
 
 const router = express.Router();
 
@@ -12,6 +13,9 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/auth/error" }),
   (req, res) => {
+    if (req.user.githubID != keys.githubOnlyID)
+      return res.status(403).json({ message: "You are not authorized." });
+
     res.json({ message: "Authentication succeeded" });
   }
 );

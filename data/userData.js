@@ -16,6 +16,12 @@ const getUser = async id => {
   return user;
 };
 
+const getUserByGithubId = async id => {
+  const user = await User.findOne({ githubID: id });
+
+  return user;
+};
+
 module.exports = {
   addUser,
   getUser
