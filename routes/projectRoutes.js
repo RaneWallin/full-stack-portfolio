@@ -42,13 +42,26 @@ router.post("/", requireLogin, async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", requireLogin, async (req, res) => {
   try {
     const result = await projectDB.updateProject(req.params.id, req.body);
 
     if (result) return res.json({ message: "Project updated" });
 
     res.status(400).json({ message: "Unable to update project." });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+router.delete("/:id", requireLogin, async (req, res) => {
+  try {
+    const result = projectDB.deleteProject(req.params.id);
+
+    if (result) return res.json({ message: "Deleted." });
+
+    res.status(400).json({ message: "Could not delete that project." });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
