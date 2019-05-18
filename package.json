@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js ",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/RaneWallin/full-stack-portfolio#readme",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cookie-session": "^1.3.3",
     "express": "^4.17.0",
     "helmet": "^3.18.0",
