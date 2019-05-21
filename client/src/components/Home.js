@@ -26,8 +26,4 @@ const HomeWrapper = styled.div`
   padding-top: 15px;
   background-color: #1e1e1e;
   height: 93vh;
-  h2 {
-    color: white;
-    max-width: 1080px;
-  }
 `;

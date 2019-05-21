@@ -53,6 +53,15 @@ const HeroContainer = styled.div`
   padding-top: calc(75% / 2);
   border: 2px inset grey;
   margin: 0 auto;
+  @media (max-width: 600px) {
+    padding-top: 75%;
+  }
+
+  @media (max-width: 400px) {
+    padding-top: 100%;
+    //max-height: 600px;
+    height: 80vh;
+  }
 `;
 
 const HeroWrapper = styled.div`
